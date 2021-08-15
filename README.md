@@ -4,7 +4,7 @@
 
 ## About codename:Mercury
 
-Mercury is a CMS(Content-Managament-System), you can create your own content, you can create blog, forum, e-commerce , just name name it.
+Mercury is a CMS(Content-Managament-System), you can create your own content, you can create blog, forum, e-commerce , just name it.
 
 
 ## Development
