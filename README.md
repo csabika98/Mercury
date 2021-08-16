@@ -1,4 +1,4 @@
-<p align="center"><a href="https://github.com/csabika98/Mercury" target="_blank"><img src="https://i.imgur.com/tOtaEJZ.png" width="400"></a></p>
+<p align="center"><a href="https://github.com/csabika98/Mercury" target="_blank"><img src="https://i.imgur.com/ofvNyBQ.png" width="400"></a></p>
 
 
 
