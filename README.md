@@ -16,6 +16,9 @@ Mercury is under development, in his early-stage.
 
 If u like my project, contact me : sallcsa.csaba8@gmail.com
 
+## Technologies
+
+Laravel 8 + Blade template engine + MySQL + React 
 
 
 
