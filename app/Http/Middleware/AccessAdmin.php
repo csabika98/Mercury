@@ -25,7 +25,7 @@ class AccessAdmin
             return $next($request);
         }
         //echo "403 Forbidden! you have no access to the admin panel";
-        return redirect('home');
-
+        //return redirect('home');
+        return response()->view('errormessages.403');
     }
 }

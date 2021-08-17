@@ -5,6 +5,10 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Role;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+
+
+
 
 class UsersTableSeeder extends Seeder
 {
@@ -20,20 +24,18 @@ class UsersTableSeeder extends Seeder
 
         User::truncate();
 
+        $password = Hash::make('pass');
+
         $admin = User::create([
             'name'=> 'Admin',
             'email' => 'admin@admin.com',
-            'password'=> hash("md5",'password')
+            'password'=> $password,
         ]);
 
         $csabi = User::create([
             'name'=>'Csabi',
             'email'=>'sallcsa.csaba8@gmail.com',
-            'password'=>hash("md5",'password')
-
-
-
-
+            'password'=>$password,
         ]);
 
         $admin->roles()->attach($adminRole);
