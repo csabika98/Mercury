@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Admin\PagesController;
+use App\Http\Controllers\Admin\UsersController;
+use App\Http\Controllers\Admin\UsersDataController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use phpDocumentor\Reflection\Types\Resource_;
@@ -21,7 +23,7 @@ Route::get('/', function () {
 });
 
 Route::get('/admin', function(){ // Admin panel still under development
-    return "you are admin or editor"; // set case
+    return view('admin.index'); 
 })->middleware('admin');
 
 Auth::routes();
@@ -30,6 +32,9 @@ Route::resource('/admin/pages', PagesController::class)->middleware('admin');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::resource('/admin/users', UsersController::class)->middleware('admin');
+
+Route::resource('/admin/changeuserdata', UsersDataController::class)->middleware('admin');
 
 Auth::routes();
 
