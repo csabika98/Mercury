@@ -26,6 +26,9 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Models\Role');
     }
 
+    public function posts(){
+        return $this->hasMany('App\Models\Post');
+    }
 
     public function isAdminOrEditor(){
         return $this->hasAnyRole(['admin']);

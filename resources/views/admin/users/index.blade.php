@@ -19,7 +19,7 @@
         @foreach ($model as $user )
         <tr>
             <td>
-            <a href='/admin/changeuserdata/{{ $user->id }}/edit'>{{ $user->name }}</a>
+            <a href={{ route('changeuserdata.edit', ['changeuserdatum'=>$user->id]) }}>{{ $user->name }}</a>
         </td>
             <td>{{ $user->email }}</td>
             <td>

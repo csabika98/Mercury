@@ -2,16 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\DB;
-use App\Models\User;
-use App\Models\Role;
+use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
-class UsersDataController extends Controller
+class BlogController extends Controller
 {
-
     public function __construct()
     {   
         $this->middleware('admin');
@@ -24,7 +22,13 @@ class UsersDataController extends Controller
      */
     public function index()
     {
-        return view('admin.users.index')->with('model', User::all());
+        if(Auth::user()->hasAnyRole(['admin'])){
+            $posts = Post::paginate(5);
+        }else{
+            $posts = Auth::user()->posts()->paginate(5);
+        }
+        
+        return view('admin.blog.index', ['model'=>$posts]);
     }
 
     /**
@@ -51,10 +55,10 @@ class UsersDataController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(Post $post)
     {
         //
     }
@@ -62,54 +66,33 @@ class UsersDataController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(Post $post)
     {
-
-        if(Auth::user()->id == $user->id){
-            return redirect()->route('users.index')->with('status', 'You cannot edit yourself.'); 
-        }
-
-        return view('admin.users.editdata')->with('model', User::all());
-    
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, Post $post)
     {
-         // ELOQUENT!
-        // $user->fill($request->only([
-        //    'name', 'email'
-        //]));
-        
-        
-        $user= DB::table('users')
-              ->where('id', $request)
-              ->update(['name' => $request]);
-
-       // ELOQUENT!
-        
-
-
-        return redirect()->route('pages.index');
-
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(Post $post)
     {
         //
     }

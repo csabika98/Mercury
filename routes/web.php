@@ -3,6 +3,8 @@
 use App\Http\Controllers\Admin\PagesController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\UsersDataController;
+use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use phpDocumentor\Reflection\Types\Resource_;
@@ -18,9 +20,7 @@ use phpDocumentor\Reflection\Types\Resource_;
 |
 */
 
-Route::get('/', function () {
-    return response()->view('auth.login');
-});
+Route::get('/', "App\Http\Controllers\HomeController@index");
 
 Route::get('/admin', function(){ // Admin panel still under development
     return view('admin.index'); 
@@ -39,3 +39,5 @@ Route::resource('/admin/changeuserdata', UsersDataController::class)->middleware
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::resource('/admin/blog', BlogController::class)->middleware('admin');
