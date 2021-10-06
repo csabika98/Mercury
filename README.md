@@ -18,7 +18,7 @@ If u like my project, contact me : sallcsa.csaba8@gmail.com
 
 ## Technologies
 
-Laravel 8 + Blade template engine + MySQL + React 
+Laravel 8 + MySQL + React 
 
 
 
